@@ -1,0 +1,102 @@
+name: keyd-keychron-k2v2
+version: "2.1.1"
+description: "Personalized keyd configuration skill for Keychron K2 v2 on Arch Linux with Hyprland - Git-tracked dotfiles workflow"
+author: "Keychron K2 v2 User"
+license: "MIT"
+created: "2024-02-10"
+updated: "2024-02-11"
+
+keywords:
+  - keyd
+  - keychron
+  - k2v2
+  - keyboard
+  - remapping
+  - linux
+  - arch
+  - hyprland
+  - wayland
+  - neovim
+  - vim
+  - dotfiles
+  - git
+
+platforms:
+  - linux
+  - arch
+
+dependencies:
+  - keyd>=2.5.0
+
+compatible_with:
+  - claude
+  - cursor
+  - copilot
+  - continue
+  - windsurf
+  - cody
+  - aider
+  - antigravity
+  - opencode
+  - qwen
+
+entry_point: SKILL.md
+
+files:
+  core:
+    - SKILL.md
+    - CONSTRAINTS.md
+    - INTENT.md
+    - KEYBOARD_LAYOUT.md
+  reference:
+    - REFERENCE_WIKI.md
+    - QUICK_REFERENCE.md
+    - ANTI_PATTERNS_SHORT.md
+    - EXAMPLES_SHORT.md
+    - APP_REMAPPING.md
+  metadata:
+    - context.json
+    - _skill-meta.yml
+    - PRD.md
+  documentation:
+    - README.md
+    - CHANGELOG.md
+
+priority: high
+
+tags:
+  hardware: ["keychron-k2v2", "75-percent", "84-key", "ansi", "mechanical", "no-fn-remap", "no-light-remap", "hot-swap-varies"]
+  software: ["keyd", "arch-linux", "hyprland", "wayland", "git-workflow"]
+  workflow: ["neovim", "terminal-first", "vim-keybindings", "dotfiles", "continuous-iteration"]
+  user_level: ["advanced", "professional-developer", "sysadmin"]
+
+repository: "https://github.com/rvaiya/keyd"
+
+support:
+  irc: "#keyd on OFTC"
+  issues: "https://github.com/rvaiya/keyd/issues"
+  documentation: "https://github.com/rvaiya/keyd/blob/master/docs/keyd.scdoc"
+
+changelog:
+  - version: "2.1.1"
+    date: "2024-02-11"
+    changes:
+      - "Fixed EXAMPLES_SHORT.md: Removed Week/Month timeline labels"
+      - "Fixed QUICK_REFERENCE.md: Added Git workflow throughout"
+      - "Fixed ANTI_PATTERNS_SHORT.md: Removed broken cross-reference, added Git anti-pattern"
+      - "Fixed REFERENCE_WIKI.md: Updated backup section to Git workflow, removed Week timeline"
+      - "Fixed context.json: Changed hot_swappable from false to varies_by_revision"
+      - "All reference files now consistent with Git-first workflow"
+  - version: "2.1.0"
+    date: "2024-02-11"
+    changes:
+      - "Added prominent file reading protocol to SKILL.md"
+      - "Marked Light key as hardware-only (like Fn) in all files"
+      - "Removed timeline-based progression from INTENT.md"
+      - "Emphasized Git-tracked dotfiles workflow throughout"
+      - "Added APP_REMAPPING.md for application-specific bindings"
+      - "Updated all core files to prioritize version control"
+  - version: "2.0.0"
+    date: "2024-02-10"
+    changes:
+      - "Initial comprehensive skill system release"

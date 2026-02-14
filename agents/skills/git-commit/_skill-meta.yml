@@ -1,0 +1,16 @@
+name: git-commit
+version: "0.0.0"
+description: "Conventional-commit-focused workflow for staging and committing changes safely"
+license: "MIT"
+entry_point: SKILL.md
+
+compatible_with:
+  - codex
+  - claude
+  - copilot
+
+files:
+  core:
+    - SKILL.md
+  metadata:
+    - _skill-meta.yml

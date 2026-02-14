@@ -1,0 +1,192 @@
+{
+  "skill_metadata": {
+    "name": "keyd-keychron-k2v2",
+    "version": "2.1.1",
+    "created": "2024-02-10",
+    "last_updated": "2024-02-11",
+    "status": "production"
+  },
+  "user_profile": {
+    "experience_level": "advanced",
+    "workflow_type": "terminal-first",
+    "primary_editor": "neovim",
+    "coding_experience": "professional",
+    "system_admin_level": "expert",
+    "keyboard_customization": "intermediate-to-advanced",
+    "learning_style": "documentation-reader",
+    "testing_approach": "systematic",
+    "config_management": "git-tracked-dotfiles"
+  },
+  "hardware": {
+    "keyboard": {
+      "brand": "Keychron",
+      "model": "K2 v2",
+      "form_factor": "75%",
+      "layout": "ANSI",
+      "total_keys": 84,
+      "switch_type": "Gateron Brown",
+      "connection": "wired-bluetooth",
+      "features": {
+        "nav_column": true,
+        "dedicated_arrows": true,
+        "fn_key_hardware": true,
+        "light_key_hardware": true,
+        "rgb_backlight": true,
+        "mac_windows_switch": true,
+        "hot_swappable": "varies_by_revision"
+      },
+      "hardware_only_keys": ["fn", "light"],
+      "typical_device_id": "04d9:0356"
+    }
+  },
+  "system": {
+    "os": {
+      "distribution": "Arch Linux",
+      "update_model": "rolling",
+      "kernel": "latest-stable",
+      "init_system": "systemd",
+      "package_manager": "pacman"
+    },
+    "display": {
+      "server": "Wayland",
+      "compositor": "Hyprland",
+      "tiling": true,
+      "meta_key_usage": "extensive"
+    },
+    "shell": {
+      "primary": "bash",
+      "terminal_emulator": "alacritty",
+      "multiplexer": "tmux"
+    }
+  },
+  "software_stack": {
+    "editor": "Neovim",
+    "key_remapper": {
+      "current": "keyd",
+      "previous": "kanata",
+      "version": "2.5.0+"
+    },
+    "development_tools": ["git", "make", "cargo", "npm"],
+    "workflow_tools": ["terminal", "neovim", "git", "grep", "tmux"]
+  },
+  "configuration_approach": {
+    "philosophy": "continuous_iteration",
+    "workflow": "git_tracked_dotfiles",
+    "source_of_truth": "~/dotfiles/keyd/",
+    "deployment_target": "/etc/keyd/",
+    "version_control": "mandatory",
+    "timeline_based": false,
+    "experimentation": "encouraged_with_rollback"
+  },
+  "constraints": {
+    "hard_constraints": [
+      "no_fn_remapping",
+      "no_light_remapping",
+      "no_meta_override",
+      "wayland_only_features",
+      "no_gui_tools",
+      "preserve_vim_keybindings",
+      "arch_linux_syntax_only",
+      "git_workflow_mandatory"
+    ],
+    "soft_constraints": [
+      "max_8_overload_bindings",
+      "max_3_layer_depth",
+      "continuous_iteration",
+      "thumb_keys_preferred",
+      "git_commit_after_changes"
+    ],
+    "preferences": {
+      "max_layers": 3,
+      "max_overload_keys": 8,
+      "max_shortcuts_to_memorize": 20,
+      "git_required": true,
+      "progressive_learning": true,
+      "validation_required": true,
+      "timeline_prescriptive": false
+    }
+  },
+  "workflow_characteristics": {
+    "time_allocation": {
+      "neovim": 0.60,
+      "terminal": 0.30,
+      "web_communication": 0.10
+    },
+    "high_frequency_keys": ["hjkl", "ctrl", "esc", "enter", "colon", "slash"],
+    "medium_frequency_keys": ["brackets", "symbols", "space", "tab", "shift"],
+    "low_frequency_keys": ["function_keys", "capslock", "nav_column", "media"],
+    "hardware_only_keys": ["fn", "light"],
+    "pain_points": [
+      "pinky_strain_from_ctrl",
+      "capslock_wasted",
+      "slow_symbol_access",
+      "hand_movement_for_nav"
+    ],
+    "desired_improvements": [
+      "reduced_pinky_workload",
+      "useful_capslock",
+      "fast_symbol_access",
+      "vim_nav_everywhere"
+    ]
+  },
+  "success_metrics": {
+    "positive_indicators": [
+      "faster_code_patterns",
+      "less_pinky_strain",
+      "preserved_shortcuts",
+      "config_stability",
+      "low_cognitive_load",
+      "easy_rollback_via_git",
+      "clean_commit_history"
+    ],
+    "failure_indicators": [
+      "frequent_mistypes",
+      "forgotten_layers",
+      "broken_muscle_memory",
+      "frustration_over_gain",
+      "requires_reference_sheet",
+      "lost_config_changes",
+      "no_version_history"
+    ]
+  },
+  "agent_directives": {
+    "always_do": [
+      "read_constraints_first",
+      "verify_hardware_compatibility",
+      "reference_k2v2_specifically",
+      "emphasize_git_workflow",
+      "provide_validation_steps",
+      "match_sophistication_level",
+      "explain_trade_offs",
+      "include_rollback_instructions"
+    ],
+    "never_do": [
+      "suggest_fn_remapping",
+      "suggest_light_remapping",
+      "override_meta_key",
+      "assume_gaming_focus",
+      "recommend_gui_tools",
+      "edit_etc_directly",
+      "skip_git_workflow",
+      "provide_beginner_explanations_unless_asked",
+      "prescribe_fixed_timelines"
+    ]
+  },
+  "file_reading_order": {
+    "phase_1_mandatory": [
+      "CONSTRAINTS.md",
+      "KEYBOARD_LAYOUT.md",
+      "INTENT.md"
+    ],
+    "phase_2_reference": [
+      "REFERENCE_WIKI.md",
+      "QUICK_REFERENCE.md",
+      "ANTI_PATTERNS_SHORT.md",
+      "EXAMPLES_SHORT.md",
+      "APP_REMAPPING.md"
+    ],
+    "phase_3_protocol": [
+      "SKILL.md"
+    ]
+  }
+}
