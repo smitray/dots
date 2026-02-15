@@ -40,6 +40,25 @@ agents/tools/nficon --glyph nf-cod-github
 agents/tools/nficon --to-printf f2b4
 ```
 
+### Export a ready-to-use icon library (Phase 2)
+
+Generate exports from `icons.csv`:
+
+```sh
+# Create/update exports in-place (sorted by name)
+agents/tools/nficon-export --format json --mode map --out agents/skills/nerd-fonts-icons/exports/icons.json
+agents/tools/nficon-export --format lua --out agents/skills/nerd-fonts-icons/exports/icons.lua
+agents/tools/nficon-export --format sh --out agents/skills/nerd-fonts-icons/exports/icons.sh
+agents/tools/nficon-export --format toml --out agents/skills/nerd-fonts-icons/exports/icons.toml
+agents/tools/nficon-export --format tsv --out agents/skills/nerd-fonts-icons/exports/icons.tsv
+```
+
+Export only a subset (example: VS Code codicons):
+
+```sh
+agents/tools/nficon-export --format json --mode map --prefix nf-cod- --out /tmp/nf-cod.json
+```
+
 ### Find an icon by name prefix
 
 ```sh
