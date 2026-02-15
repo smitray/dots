@@ -58,6 +58,11 @@ phase1_fonts_icons() {
     ttf-dejavu ttf-liberation \
     python
 
+  # Personal-preference monospace fonts (best-effort; names can vary by repo state).
+  arch-chroot /mnt pacman -S --noconfirm --needed \
+    ttf-jetbrains-mono ttf-iosevka \
+    ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono >/dev/null 2>&1 || true
+
   # Best-effort tofu killers for rare glyphs (don’t fail installer if unavailable).
   arch-chroot /mnt pacman -S --noconfirm --needed \
     gnu-unifont ttf-hanazono >/dev/null 2>&1 || true

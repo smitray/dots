@@ -21,6 +21,20 @@ sudo pacman -S --needed \
   ttf-dejavu ttf-liberation
 ```
 
+### Personal monospace (recommended)
+
+If you want your UI/terminal monospace to be JetBrains/Iosevka while still keeping global fallback coverage:
+
+```sh
+sudo pacman -S --needed ttf-jetbrains-mono ttf-iosevka
+```
+
+If you want Nerd Font icons without installing a full Nerd-patched monospace, install symbol fallbacks:
+
+```sh
+sudo pacman -S --needed ttf-nerd-fonts-symbols ttf-nerd-fonts-symbols-mono
+```
+
 ### Last-resort tofu killers (optional)
 
 If you still see boxes for rare/obscure codepoints (historic scripts, very rare CJK extensions), add one or both:
