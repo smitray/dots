@@ -58,6 +58,10 @@ phase1_fonts_icons() {
     ttf-dejavu ttf-liberation \
     python
 
+  # Best-effort tofu killers for rare glyphs (don’t fail installer if unavailable).
+  arch-chroot /mnt pacman -S --noconfirm --needed \
+    gnu-unifont ttf-hanazono >/dev/null 2>&1 || true
+
   install -d "/mnt/home/${USERNAME}/.local/bin"
   install -m 0755 "${tmp_assets}/nficon" "/mnt/home/${USERNAME}/.local/bin/nficon"
   install -m 0755 "${tmp_assets}/nficon-export" "/mnt/home/${USERNAME}/.local/bin/nficon-export"
@@ -75,4 +79,3 @@ phase1_fonts_icons() {
 
   arch-chroot /mnt fc-cache -f >/dev/null 2>&1 || true
 }
-
