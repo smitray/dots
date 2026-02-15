@@ -30,8 +30,9 @@ load_steps_remote() {
 
   local tmp_dir
   tmp_dir="$(mktemp -d /tmp/dots-phase1-steps.XXXXXX)"
+  trap 'rm -rf "${tmp_dir}"' RETURN
   for f in "${STEP_FILES[@]}"; do
-    curl -fsSL "${PHASE1_BASE_URL%/}/phase-1/steps/${f}" -o "${tmp_dir}/${f}"
+    curl -fsSL --retry 3 --retry-delay 1 "${PHASE1_BASE_URL%/}/phase-1/steps/${f}" -o "${tmp_dir}/${f}"
   done
 
   for f in "${STEP_FILES[@]}"; do
