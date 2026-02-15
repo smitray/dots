@@ -18,6 +18,7 @@ phase1_prompts() {
   INSTALL_HW_STACK="${INSTALL_HW_STACK:-0}" # nvidia-open + pipewire/wireplumber/bluetooth
   INSTALL_CUDA="${INSTALL_CUDA:-0}" # only relevant if INSTALL_HW_STACK=1
   INSTALL_NVIDIA_CONTAINERS="${INSTALL_NVIDIA_CONTAINERS:-0}" # podman + nvidia container toolkit (only if INSTALL_HW_STACK=1)
+  INSTALL_FONTS_ICONS="${INSTALL_FONTS_ICONS:-0}" # fonts + nficon tools + icons.csv into user's XDG dirs
 
   [[ -b "$SYSTEM_DISK" ]] || die "SYSTEM_DISK not found: $SYSTEM_DISK"
   [[ -b "$DATA_DISK" ]] || die "DATA_DISK not found: $DATA_DISK"
@@ -69,6 +70,12 @@ phase1_prompts() {
     INSTALL_NVIDIA_CONTAINERS=0
   fi
 
+  read -r -p "Install fonts + nficon icon library (XDG) now? [y/N]: " INPUT_FONTS_ICONS || true
+  case "${INPUT_FONTS_ICONS:-}" in
+    y|Y|yes|YES) INSTALL_FONTS_ICONS=1 ;;
+    *) INSTALL_FONTS_ICONS=0 ;;
+  esac
+
   echo "Phase 1 (minimal) will:"
   echo "- WIPE and repartition: $SYSTEM_DISK and $DATA_DISK"
   echo "- Install base Arch to: /mnt"
@@ -89,8 +96,10 @@ phase1_prompts() {
       echo "- Extra: Podman + NVIDIA Container Toolkit"
     fi
   fi
+  if [[ "$INSTALL_FONTS_ICONS" == "1" ]]; then
+    echo "- Extra: fonts + nficon icon library (XDG user install)"
+  fi
   echo
   read -r -p "Type ERASE to continue: " CONFIRM
   [[ "$CONFIRM" == "ERASE" ]] || die "aborted"
 }
-

@@ -10,6 +10,7 @@ STEP_FILES=(
   50-chroot-config.sh
   60-passwords.sh
   70-hw-stack.sh
+  75-fonts-icons.sh
   90-main.sh
 )
 

@@ -33,6 +33,7 @@ PHASE1_BASE_URL="<RAW_REPO_BASE_URL>" bash <(curl -fsSL "<RAW_REPO_BASE_URL>/pha
 - Installs `linux` by default (optionally `linux-lts` too)
 - Optionally installs: `nvidia-open` + `nvidia-utils`, PipeWire + WirePlumber, Bluetooth, and CUDA
 - Optionally installs: Podman + NVIDIA Container Toolkit (for GPU containers)
+- Optionally installs: fonts + `nficon` icon library into the user's XDG dirs (`~/.local/share/nficon`, `~/.local/bin`)
 
 ## Script layout
 - Entry point: `phase-1/install.sh`

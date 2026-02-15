@@ -30,6 +30,12 @@ If selected during the installer prompts, Phase 1 can also install a “hardware
 - (Optional) CUDA toolkit (`cuda`)
 - (Optional) Podman + NVIDIA Container Toolkit (`nvidia-container-toolkit`)
 
+It can also optionally install a baseline font stack and seed the user's XDG directories with the `nficon` icon library:
+- Fonts: Noto families + common fallbacks (via pacman)
+- `nficon` + `nficon-export` in `~/.local/bin`
+- Icons library in `~/.local/share/nficon` (CSV + exports)
+- Fontconfig preference snippet in `~/.config/fontconfig/conf.d/`
+
 ## Outputs
 - Bootable minimal Arch system
 - Mount points created as per partition table

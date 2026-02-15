@@ -2,7 +2,19 @@
 set -euo pipefail
 
 script_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-csv_path="${NFICON_CSV:-$script_dir/../skills/nerd-fonts-icons/icons.csv}"
+data_home="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+default_csv_path() {
+  local xdg_csv="${data_home%/}/nficon/icons.csv"
+  local repo_csv="${script_dir}/../skills/nerd-fonts-icons/icons.csv"
+  if [[ -f "$xdg_csv" ]]; then
+    printf '%s\n' "$xdg_csv"
+    return 0
+  fi
+  printf '%s\n' "$repo_csv"
+}
+
+csv_path="${NFICON_CSV:-$(default_csv_path)}"
 
 usage() {
   cat <<'EOF'

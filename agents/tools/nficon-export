@@ -38,10 +38,18 @@ def die(msg: str) -> None:
 
 def default_csv_path() -> str:
     script_dir = os.path.dirname(os.path.realpath(__file__))
-    return os.environ.get(
-        "NFICON_CSV",
-        os.path.join(script_dir, "..", "skills", "nerd-fonts-icons", "icons.csv"),
+    env_csv = os.environ.get("NFICON_CSV")
+    if env_csv:
+        return env_csv
+
+    data_home = os.environ.get("XDG_DATA_HOME") or os.path.join(
+        os.path.expanduser("~"), ".local", "share"
     )
+    xdg_csv = os.path.join(data_home, "nficon", "icons.csv")
+    if os.path.isfile(xdg_csv):
+        return xdg_csv
+
+    return os.path.join(script_dir, "..", "skills", "nerd-fonts-icons", "icons.csv")
 
 
 def load_icons(csv_path: str) -> list[Icon]:
