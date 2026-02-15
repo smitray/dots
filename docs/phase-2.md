@@ -7,6 +7,8 @@
 - Dotfiles deploy (stow)
 - Utilities setup (keyd, etc.)
 - Services enablement
+- NVIDIA: install open kernel module driver + userland (`nvidia-open`, `nvidia-utils`)
+- CUDA: install toolkit (`cuda`) and verify `nvidia-smi` + toolchain
 
 ## TBD
 - Exact package lists
