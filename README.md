@@ -34,7 +34,12 @@ PHASE1_BASE_URL="https://raw.githubusercontent.com/<user>/<repo>/<branch>" \
 ```
 
 ## Project-Local Skills
-This repo keeps skills under `agents/skills/`. For Codex, run with a repo-local home so skills are picked up from this checkout:
+This repo keeps skills under `agents/skills/`.
+
+- Codex loads skills from `.codex/skills/` (a symlink to `agents/skills/` in this repo).
+- The `npx skills` manager installs to `.agents/skills/` (kept as symlinks into `agents/skills/`).
+
+For Codex, run with a repo-local home so skills are picked up from this checkout:
 
 ```sh
 CODEX_HOME="$PWD/.codex" codex
