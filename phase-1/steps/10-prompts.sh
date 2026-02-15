@@ -19,6 +19,7 @@ phase1_prompts() {
   INSTALL_CUDA="${INSTALL_CUDA:-0}" # only relevant if INSTALL_HW_STACK=1
   INSTALL_NVIDIA_CONTAINERS="${INSTALL_NVIDIA_CONTAINERS:-0}" # podman + nvidia container toolkit (only if INSTALL_HW_STACK=1)
   INSTALL_FONTS_ICONS="${INSTALL_FONTS_ICONS:-0}" # fonts + nficon tools + icons.csv into user's XDG dirs
+  INSTALL_PARU="${INSTALL_PARU:-0}" # AUR helper (built in chroot)
 
   [[ -b "$SYSTEM_DISK" ]] || die "SYSTEM_DISK not found: $SYSTEM_DISK"
   [[ -b "$DATA_DISK" ]] || die "DATA_DISK not found: $DATA_DISK"
@@ -76,6 +77,12 @@ phase1_prompts() {
     *) INSTALL_FONTS_ICONS=0 ;;
   esac
 
+  read -r -p "Install paru (AUR helper) now? [y/N]: " INPUT_PARU || true
+  case "${INPUT_PARU:-}" in
+    y|Y|yes|YES) INSTALL_PARU=1 ;;
+    *) INSTALL_PARU=0 ;;
+  esac
+
   echo "Phase 1 (minimal) will:"
   echo "- WIPE and repartition: $SYSTEM_DISK and $DATA_DISK"
   echo "- Install base Arch to: /mnt"
@@ -98,6 +105,9 @@ phase1_prompts() {
   fi
   if [[ "$INSTALL_FONTS_ICONS" == "1" ]]; then
     echo "- Extra: fonts + nficon icon library (XDG user install)"
+  fi
+  if [[ "$INSTALL_PARU" == "1" ]]; then
+    echo "- Extra: paru (AUR helper) installed in system"
   fi
   echo
   read -r -p "Type ERASE to continue: " CONFIRM

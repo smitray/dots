@@ -10,5 +10,6 @@ phase1_main() {
   phase1_passwords
   phase1_hw_stack
   phase1_fonts_icons
+  phase1_paru
   log "Done. You can reboot now."
 }
