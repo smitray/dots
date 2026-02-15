@@ -12,6 +12,7 @@ STEP_FILES=(
   70-hw-stack.sh
   75-fonts-icons.sh
   80-paru.sh
+  85-mise.sh
   90-main.sh
 )
 

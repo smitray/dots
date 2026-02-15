@@ -11,5 +11,6 @@ phase1_main() {
   phase1_hw_stack
   phase1_fonts_icons
   phase1_paru
+  phase1_mise
   log "Done. You can reboot now."
 }
