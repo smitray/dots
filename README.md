@@ -7,8 +7,7 @@ Two-phase Arch + Hyprland install and dotfiles.
 Boot into the Arch Live ISO, connect to the internet, then run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/smitray/dots/main/phase-1/install.sh | \
-  PHASE1_BASE_URL="https://raw.githubusercontent.com/smitray/dots/main" bash
+curl -fsSL https://raw.githubusercontent.com/smitray/dots/main/phase-1/install.sh | bash
 ```
 
 This will:

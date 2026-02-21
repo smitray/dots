@@ -13,8 +13,7 @@
 From the Arch Live ISO:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/smitray/dots/main/phase-1/install.sh | \
-  PHASE1_BASE_URL="https://raw.githubusercontent.com/smitray/dots/main" bash
+curl -fsSL https://raw.githubusercontent.com/smitray/dots/main/phase-1/install.sh | bash
 ```
 
 Or from a local clone:
