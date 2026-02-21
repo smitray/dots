@@ -7,10 +7,5 @@ phase1_main() {
   phase1_format_and_mount
   phase1_pacstrap
   phase1_system_config
-  phase1_passwords
-  phase1_hw_stack
-  phase1_fonts_icons
-  phase1_paru
-  phase1_mise
-  log "Done. You can reboot now."
+  log "Phase 1 Complete. You can now reboot into your new system."
 }

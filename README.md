@@ -2,36 +2,60 @@
 
 Two-phase Arch + Hyprland install and dotfiles.
 
+## Quick Start (Phase 1 from Arch Live ISO)
+
+Boot into the Arch Live ISO, connect to the internet, then run:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/smitray/dots/main/phase-1/install.sh | \
+  PHASE1_BASE_URL="https://raw.githubusercontent.com/smitray/dots/main" bash
+```
+
+This will:
+- Partition and format two NVMe SSDs (system + data)
+- Install a minimal Arch Linux with GRUB
+- Set up Snapper for automatic Btrfs snapshots (30-day retention)
+- Create a user with sudo access
+- Reboot into a working TTY + NetworkManager system
+
+## Partition Layout
+
+### System Disk (`/dev/nvme0n1`) -- Disposable, wiped on reinstall
+
+| Part | Size | Mount | Purpose |
+|------|------|-------|---------|
+| p1 | 2 GiB | `/boot` | EFI (GRUB) |
+| p2 | 32 GiB | [swap] | Disk swap + hibernation |
+| p3 | 140 GiB | `/` | Root filesystem + Snapper snapshots |
+| p4 | 726 GiB | `/downloads` | ISOs, media, temp files |
+
+### Data Disk (`/dev/nvme1n1`) -- Persistent, survives reinstall
+
+| Part | Size | Mount | Purpose |
+|------|------|-------|---------|
+| p1 | 80 GiB | `/home` | User configs, dotfiles, runtimes |
+| p2 | 300 GiB | `/workspace` | Development projects |
+| p3 | 80 GiB | `/obsidian` | Notes vault |
+| p4 | 440 GiB | `/srv` | Containers, databases, services |
+
+## Snapshot Rollback
+
+Powered by **Snapper** + **snap-pac** + **grub-btrfs-support**:
+- Every `pacman -Syu` automatically creates pre/post snapshots
+- Snapshots appear in the GRUB boot menu
+- Select a snapshot at boot to roll back instantly
+- Snapshots older than 30 days are auto-cleaned
+
 ## Docs
-- `docs/PRD.md`
-- `docs/partition-table.md`
-- `docs/phase-1.md`
-- `docs/phase-2.md`
-- `docs/decisions.md`
+- `docs/partition-table.md` -- Full partition spec
+- `docs/phase-1.md` -- Phase 1 design
+- `docs/phase-2.md` -- Phase 2 design (post-reboot)
+- `docs/decisions.md` -- Architecture decisions
 
 ## Structure
-- `phase-1/`: minimal install + partitioning + base system
-- `phase-2/`: post-reboot packages + Hyprland + dotfiles
-- `agents/`: agent setup, prompts, and skills
-- `docs/`: specs and PRD
-
-## Phase 1 entrypoint
-- Script: `phase-1/install.sh` (run from the live ISO; interactive prompts; see `phase-1/README.md`)
-
-## Run Phase 1 from Arch ISO (curl)
-The Phase 1 installer is **bash** (not POSIX `sh`). When running from the live ISO, you can execute it directly from a hosted repo:
-
-```sh
-PHASE1_BASE_URL="<RAW_REPO_BASE_URL>" \
-  curl -fsSL "<RAW_REPO_BASE_URL>/phase-1/install.sh" | bash
-```
-
-Example (GitHub raw):
-
-```sh
-PHASE1_BASE_URL="https://raw.githubusercontent.com/<user>/<repo>/<branch>" \
-  curl -fsSL "https://raw.githubusercontent.com/<user>/<repo>/<branch>/phase-1/install.sh" | bash
-```
+- `phase-1/` -- Minimal install (partitioning + base system + GRUB + Snapper)
+- `phase-2/` -- Post-reboot packages + Hyprland + dotfiles (TBD)
+- `agents/` -- Agent skills, prompts, and tools
 
 ## Project-Local Skills
 This repo keeps skills under `agents/skills/`.

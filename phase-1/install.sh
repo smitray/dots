@@ -8,11 +8,6 @@ STEP_FILES=(
   30-format-mount.sh
   40-pacstrap.sh
   50-chroot-config.sh
-  60-passwords.sh
-  70-hw-stack.sh
-  75-fonts-icons.sh
-  80-paru.sh
-  85-mise.sh
   90-main.sh
 )
 

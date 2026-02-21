@@ -16,6 +16,7 @@ require_root_and_uefi() {
 
 require_base_tools() {
   need lsblk
+  need blkid
   need sgdisk
   need mkfs.fat
   need mkswap

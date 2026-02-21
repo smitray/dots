@@ -16,12 +16,11 @@ phase1_pacstrap() {
     git
     zsh
     vim
+    snapper
+    snap-pac
+    grub-btrfs-support
   )
-  if [[ "${INSTALL_LTS:-0}" == "1" ]]; then
-    PACSTRAP_PKGS+=(linux-lts)
-  fi
 
   pacstrap -K /mnt "${PACSTRAP_PKGS[@]}"
-  genfstab -U /mnt >>/mnt/etc/fstab
+  genfstab -U /mnt >> /mnt/etc/fstab
 }
-
