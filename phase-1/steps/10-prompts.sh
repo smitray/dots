@@ -5,9 +5,10 @@ phase1_prompts() {
   require_root_and_uefi
   require_base_tools
   show_block_devices
+  detect_disks
 
-  SYSTEM_DISK="${SYSTEM_DISK:-/dev/nvme0n1}"
-  DATA_DISK="${DATA_DISK:-/dev/nvme1n1}"
+  SYSTEM_DISK="${SYSTEM_DISK:-$DETECTED_DISK_1}"
+  DATA_DISK="${DATA_DISK:-$DETECTED_DISK_2}"
   HOSTNAME="${HOSTNAME:-arch}"
   USERNAME="${USERNAME:-debasmitr}"
   TIMEZONE="${TIMEZONE:-Asia/Kolkata}"
