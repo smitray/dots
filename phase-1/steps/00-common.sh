@@ -33,37 +33,24 @@ show_block_devices() {
   echo
 }
 
-# Auto-detect NVMe (or other) disks. Sets DETECTED_DISK_1 and DETECTED_DISK_2.
-# Prefers NVMe devices; falls back to any block disk if fewer than 2 NVMe found.
+# Detect all available disks. Sets DETECTED_DISKS array.
 detect_disks() {
-  local -a disks=()
+  DETECTED_DISKS=()
 
-  # Collect all NVMe whole-disk devices first, sorted by name
   while IFS= read -r d; do
-    disks+=("$d")
-  done < <(lsblk -dnpo NAME,TYPE | awk '$2=="disk" && /nvme/' | awk '{print $1}' | sort)
+    DETECTED_DISKS+=("$d")
+  done < <(lsblk -dnpo NAME,TYPE | awk '$2=="disk" {print $1}' | sort)
 
-  # If fewer than 2 NVMe, also consider other disk types (sda, vda, etc.)
-  if (( ${#disks[@]} < 2 )); then
-    while IFS= read -r d; do
-      # Skip if already in the list
-      local dup=0
-      for existing in "${disks[@]}"; do
-        [[ "$existing" == "$d" ]] && dup=1
-      done
-      (( dup )) || disks+=("$d")
-    done < <(lsblk -dnpo NAME,TYPE | awk '$2=="disk"' | awk '{print $1}' | sort)
+  if (( ${#DETECTED_DISKS[@]} < 2 )); then
+    die "Need at least 2 disks. Found: ${DETECTED_DISKS[*]:-none}"
   fi
 
-  if (( ${#disks[@]} < 2 )); then
-    die "Need at least 2 disks. Found: ${disks[*]:-none}"
-  fi
-
-  DETECTED_DISK_1="${disks[0]}"
-  DETECTED_DISK_2="${disks[1]}"
-
-  log "Auto-detected disks:"
-  log "  Disk 1 (system): $DETECTED_DISK_1"
-  log "  Disk 2 (data):   $DETECTED_DISK_2"
+  log "Available disks:"
+  local i
+  for i in "${!DETECTED_DISKS[@]}"; do
+    local info
+    info="$(lsblk -dno SIZE,MODEL "${DETECTED_DISKS[$i]}" 2>/dev/null || true)"
+    log "  [$((i+1))] ${DETECTED_DISKS[$i]}  ${info}"
+  done
 }
 
